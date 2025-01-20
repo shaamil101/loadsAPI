@@ -4,8 +4,10 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
 @app.route('/loads/<reference_number>', methods=['GET'])
-def query(reference_number):
+def query(reference_number=None):
+    reference_number = request.args.get('reference_number')
     with open("loads.csv", mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
