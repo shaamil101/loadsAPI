@@ -5,7 +5,7 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 @app.route('/loads/<reference_number>', methods=['GET'])
-def query(value):
+def query(reference_number):
     with open("loads.csv", mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
