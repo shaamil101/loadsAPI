@@ -5,10 +5,11 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
-@app.route('/loads/<reference_number>', methods=['GET'])
-def query(reference_number=None):
+@app.route('/loads/', methods=['GET'])
+def query():
     reference_number = request.args.get('reference_number')
+    if not reference_number:
+        return jsonify({"status": "error", "message": "Missing reference number"}), 400
     with open("loads.csv", mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
