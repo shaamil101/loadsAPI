@@ -1,6 +1,6 @@
 import csv
 import os
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 import requests
 
 app = Flask(__name__)
