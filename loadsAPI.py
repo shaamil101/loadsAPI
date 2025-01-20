@@ -9,7 +9,7 @@ def query(value):
     with open("loads.csv", mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            if row['reference_number'] == value:
+            if row['reference_number'] == reference_number:
                 return jsonify({"status": "success", "data": data[reference_number]}), 200
     return jsonify({"status": "error", "message": "Reference number not found"}), 404
 
